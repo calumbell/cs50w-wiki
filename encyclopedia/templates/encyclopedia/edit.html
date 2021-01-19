@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html"%}
+
+{% block title %}
+    Edit Page
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <input type="hidden" name="mode" value="save">
+            {% if name %}
+                <input type="text" name="name" value="{{ name }}" readonly>
+            {% else %}
+                <input type="text" name="name" placeholder="Entry title">
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+                <textarea name="entry" class="form-control rounded-0 col-lg-6" rows="7">{{ entry }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+{% endblock %}

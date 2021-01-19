@@ -10,6 +10,23 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def edit(request):
+    if request.method == "GET":
+        return render(request, "encyclopedia/edit.html")
+
+    if request.method == "POST":
+
+        if request.POST["mode"] == "edit":
+            return render(request, "encyclopedia/edit.html", {
+                "name" : request.POST["name"],
+                "entry" : util.get_entry(request.POST["name"])
+            })
+
+        elif request.POST["mode"] == "save":
+            util.save_entry(request.POST["name"], request.POST["entry"])
+            url = reverse('entry', kwargs={'name': request.POST["name"]})
+            return HttpResponseRedirect(url)
+
 def entry(request, name):
     entry = util.get_entry(name)
 
@@ -18,13 +35,16 @@ def entry(request, name):
         "entry" : entry
     })
 
+
 def search(request):
     if request.method == "POST":
         query = request.POST["q"]
         entry = util.get_entry(query)
+
         if entry:
             url = reverse('entry', kwargs={'name': query})
             return HttpResponseRedirect(url)
+
         else:
             entries = util.list_entries()
             matches = []
@@ -32,6 +52,7 @@ def search(request):
             for entry in entries:
                 if query.upper() in entry.upper():
                     matches.append(entry)
+
             return render(request, "encyclopedia/search.html", {
                 "entries" : matches
             })

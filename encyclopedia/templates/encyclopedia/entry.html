@@ -5,9 +5,18 @@
 {% endblock %}
 
 {% block body %}
+    <p>
     {% if entry %}
         {{ entry }}
     {% else %}
         This entry does not exist yet.
     {% endif %}
+    </p>
+
+    <form action="{% url 'edit' %}" method="post" >
+        {% csrf_token %}
+        <input type="hidden" name="name" value ="{{ name }}" />
+        <input type="hidden" name="mode" value="edit">
+        <button type="submit" class="btn btn-primary">Edit this entry</button>
+    </form>
 {% endblock %}
