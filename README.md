@@ -23,6 +23,6 @@ python manage.py runserver
 ```
 
 
-You can view Harvard's CS50 Web Programming with Python and JavaScript course [here](https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/)
+Check out [CS50 Web Programming with Python and JavaScript](https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/)
 
 [Full project specification](https://cs50.harvard.edu/web/2020/projects/1/wiki/)

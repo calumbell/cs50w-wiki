@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from random import choice
 
 from . import util
-
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -16,13 +16,13 @@ def edit(request):
 
     if request.method == "POST":
 
-        if request.POST["mode"] == "edit":
+        if request.POST["action"] == "edit":
             return render(request, "encyclopedia/edit.html", {
                 "name" : request.POST["name"],
                 "entry" : util.get_entry(request.POST["name"])
             })
 
-        elif request.POST["mode"] == "save":
+        elif request.POST["action"] == "save":
             util.save_entry(request.POST["name"], request.POST["entry"])
             url = reverse('entry', kwargs={'name': request.POST["name"]})
             return HttpResponseRedirect(url)
@@ -34,6 +34,12 @@ def entry(request, name):
         "name" : name,
         "entry" : entry
     })
+
+def random(request):
+    entries = util.list_entries()
+    entry = choice(entries)
+    url = reverse('entry', kwargs={'name': entry})
+    return HttpResponseRedirect(url)
 
 
 def search(request):
