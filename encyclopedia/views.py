@@ -30,6 +30,7 @@ def edit(request):
 
 def entry(request, name):
     entry = util.get_entry(name)
+    name = util.format_entry_name(name)
     markdowner = Markdown()
     return render(request, "encyclopedia/entry.html", {
         "name" : name,

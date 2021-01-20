@@ -35,3 +35,16 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+def format_entry_name(name):
+    """
+    Returns a correctly formatted version of search query so that it matches
+    the entry it references. If no such entry exists, the function returns None.
+    """
+    entries = list_entries()
+    try:
+        for entry in entries:
+            if entry.upper() == name.upper():
+                return entry
+    except:
+        return None
