@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from random import choice
+from markdown2 import Markdown
 
 from . import util
 
@@ -29,10 +30,10 @@ def edit(request):
 
 def entry(request, name):
     entry = util.get_entry(name)
-
+    markdowner = Markdown()
     return render(request, "encyclopedia/entry.html", {
         "name" : name,
-        "entry" : entry
+        "entry" : markdowner.convert(entry)
     })
 
 def random(request):

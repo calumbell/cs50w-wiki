@@ -1,7 +1,9 @@
 # Wiki
-A Wikipedia-like online encyclopedia.
+A Wikipedia-like online encyclopedia. Project 1 of HarvardX's CS50w course.
 
-Project 1 of HarvardX's CS50w course.
+Check out [CS50 Web Programming with Python and JavaScript](https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/)
+
+[Full project specification](https://cs50.harvard.edu/web/2020/projects/1/wiki/)
 
 ## Setup
 
@@ -22,7 +24,8 @@ To run the development server:
 python manage.py runserver
 ```
 
+### Requirements
 
-Check out [CS50 Web Programming with Python and JavaScript](https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/)
+This website was built with [Django](https://github.com/django/django).
 
-[Full project specification](https://cs50.harvard.edu/web/2020/projects/1/wiki/)
+[Markdown2](https://github.com/trentm/python-markdown2) was used to convert Markdown to HTML.

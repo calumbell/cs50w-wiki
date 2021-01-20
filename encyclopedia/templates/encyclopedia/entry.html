@@ -7,7 +7,7 @@
 {% block body %}
     <p>
     {% if entry %}
-        {{ entry }}
+        {{ entry | safe }}
     {% else %}
         This entry does not exist yet.
     {% endif %}
