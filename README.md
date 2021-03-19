@@ -23,8 +23,13 @@ To run the development server:
 ```bash
 python manage.py runserver
 ```
+## Visuals
+<img src="screenshots/wiki-ss-index.png" width=500 />
+<img src="screenshots/wiki-ss-entry.png" width=500 />
+<img src="screenshots/wiki-ss-edit.png" width=500 />
 
-### Requirements
+
+## Requirements
 
 This website was built with [Django](https://github.com/django/django).
 

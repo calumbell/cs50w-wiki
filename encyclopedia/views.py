@@ -16,7 +16,6 @@ def edit(request):
         return render(request, "encyclopedia/edit.html")
 
     if request.method == "POST":
-
         if request.POST["action"] == "edit":
             return render(request, "encyclopedia/edit.html", {
                 "name" : request.POST["name"],
@@ -30,6 +29,11 @@ def edit(request):
 
 def entry(request, name):
     entry = util.get_entry(name)
+    if entry == None:
+        return render(request, "encyclopedia/error.html", {
+            "message" : "No entry for {name} found. Why not create one?".format(name=name)
+        })
+
     name = util.format_entry_name(name)
     markdowner = Markdown()
     return render(request, "encyclopedia/entry.html", {
