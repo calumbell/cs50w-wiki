@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html"%}
+
+{% block title %}
+    Create Page Page
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <input type="hidden" name="action" value="save">
+            <input type="text" name="name" placeholder="Entry title">
+            <textarea name="entry" class="form-control rounded-0 col-lg-6" rows="7"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Entry</button>
+    </form>
+{% endblock %}

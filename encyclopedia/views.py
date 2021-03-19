@@ -11,6 +11,24 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def create(request):
+    if request.method == "GET":
+        return render(request, "encyclopedia/create.html")
+    
+    if request.method == "POST":
+        # if entry already exists, render error template
+        if util.get_entry(request.POST["name"]):
+            return render(request, "encyclopedia/error.html", {
+                "message" : "Cannot create a new entry for {name} because it already exists.".format(
+                    name=request.POST["name"]
+                )
+            })
+        
+        # save entry and redirect user to that entry's page
+        util.save_entry(request.POST["name"], request.POST["entry"])
+        url = reverse('entry', kwargs={'name': request.POST['name']})
+        return HttpResponseRedirect(url)
+
 def edit(request):
     if request.method == "GET":
         return render(request, "encyclopedia/edit.html")

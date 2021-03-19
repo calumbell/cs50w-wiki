@@ -24,6 +24,9 @@ To run the development server:
 python manage.py runserver
 ```
 ## Visuals
+
+You can see a video of this project in action [here](https://youtu.be/E6gnUUYNTs0)
+
 <img src="screenshots/wiki-ss-index.png" width=500 />
 <img src="screenshots/wiki-ss-entry.png" width=500 />
 <img src="screenshots/wiki-ss-edit.png" width=500 />
